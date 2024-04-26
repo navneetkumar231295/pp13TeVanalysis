@@ -1,0 +1,17 @@
+*.png
+html
+*_C.*
+ROOT.tag
+inputs/dndeta_pa_again.input
+doxygen_sqlite3.db
+*.log
+ds_*_*.C
+ds_*_*.input
+GSE-*.tar.gz
+*.pcm
+check*.input
+inputs/*_again.input
+inputs/sample.root
+test*.input
+
+

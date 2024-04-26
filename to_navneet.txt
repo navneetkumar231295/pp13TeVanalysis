@@ -1,0 +1,316 @@
+{
+
+  TCanvas *c1 = new TCanvas("c1", "c1",100,60,1200,800);
+  gStyle->SetOptStat(0);
+  gStyle->SetPadTickX(1);
+  gStyle->SetPadTickY(1);
+  //c1->Range(0,0,0,0); 
+  c1->SetFillColor(10);
+  c1->SetBorderMode(0);
+  //c1->SetBorderSize(0);
+  c1->SetFrameFillColor(0);
+  c1->cd();
+   
+  tex = new TLatex(0.0465291,0.3279909,"dN/dy/(#LT N_{part}#GT/2)");
+  tex->SetTextSize(0.0406621);
+  tex->SetTextAngle(90);
+  tex->SetTextFont(42);
+  tex->SetLineWidth(2);
+
+  texa = new TLatex(0.13191,0.52,"(a)           #bf{#pi^{+}}");
+  texa->SetTextSize(0.0321);
+  texa->SetTextAngle(0);
+  texa->SetTextFont(42);
+  texa->SetLineWidth(2);
+  texb = new TLatex(0.428291,0.52,"(b)          #bf{K^{+}}");
+  texb->SetTextSize(0.0321);
+  texb->SetTextAngle(0);
+  texb->SetTextFont(42);
+  texb->SetLineWidth(2);
+  texc = new TLatex(0.71291,0.52,"(c)           #bf{p}");
+  texc->SetTextSize(0.0321); 
+  texc->SetTextAngle(0);
+  texc->SetTextFont(42);
+  texc->SetLineWidth(2);
+  texd = new TLatex(0.229291,0.461909,"#bf{#pi^{-}}              (d)");
+  texd->SetTextSize(0.0321);
+  texd->SetTextAngle(0);
+  texd->SetTextFont(42);
+  texd->SetLineWidth(2);
+  texe = new TLatex(0.5179291,0.461909,"#bf{K^{-}}              (e)");
+  texe->SetTextSize(0.0321);
+  texe->SetTextAngle(0);
+  texe->SetTextFont(42);
+  texe->SetLineWidth(2);
+  texf = new TLatex(0.809291,0.462109,"#bf{#bar{p}}               (f)");
+  texf->SetTextSize(0.0321);
+  texf->SetTextAngle(0);
+  texf->SetTextFont(42);
+  texf->SetLineWidth(2);
+
+  texn = new TLatex(0.22,0.825,"Au+Au, |y| < 0.1");
+  texn1 = new TLatex(0.22,0.795,"#sqrt{s_{NN}} = 54.4 GeV");
+  texn->SetTextSize(0.025);
+  texn->SetTextAngle(0);
+  texn->SetTextFont(42);
+  texn->SetLineWidth(2);
+  texn1->SetTextSize(0.025);
+  texn1->SetTextAngle(0);
+  texn1->SetTextFont(42);
+  texn1->SetLineWidth(2);
+  texnn = new TLatex(0.25,0.765,"|y| < 0.1");
+  texnn->SetTextSize(0.025);
+  texnn->SetTextAngle(0);
+  texnn->SetTextFont(42);
+  texnn->SetLineWidth(2);
+
+  tex1 = new TLatex(0.48,0.070579909,"#LT N_{part} #GT");
+  tex1->SetTextSize(0.0406621);
+  tex1->SetTextAngle(0);
+  tex1->SetTextFont(42);
+  tex1->SetLineWidth(2);
+  tex1->Draw();
+
+  //Canvas for pip
+  TPad *c1_0 = new TPad("c1_0", "c1_0",0.055,0.5,0.35,0.95);
+  c1_0->Draw();
+  c1_0->cd();
+  //  c1_0->Range(-4.230503,-50.001,-2.07849,824.9878);
+  //c1_0->SetFillColor(10);
+  c1_0->SetBorderMode(0);
+  c1_0->SetBorderSize(0);
+  c1_0->SetLeftMargin(0.1);
+  //c1_0->SetRightMargin(0.0);
+  c1_0->SetRightMargin(0.0);
+  c1_0->SetTopMargin(0.2);
+  c1_0->SetBottomMargin(0);
+  c1_0->SetFrameLineWidth(1);
+  c1_0->SetFrameLineWidth(1);
+ 
+  //-------- Reading input files ---------//
+  cout <<"******* pip *******" << endl;
+  //for fitting//
+  ifstream inf1_0("/home/arushi/Desktop/Paper_proposal_Analysis_1/multi_canvas/dNdy/datfiles/pip_7.dat");
+  //ifstream inf1_0("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_7.dat");
+  ifstream inf1_1("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_11.dat");
+  ifstream inf1_2("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_19.dat");
+  ifstream inf1_3("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_27.dat");
+  ifstream inf1_4("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_39.dat");
+  ifstream inf1_5("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_62.dat");
+  ifstream inf1_6("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_200.dat");
+  ifstream inf1_7("/home/arushi/Arushi/54_Finalized/snn/dndy/pip/pip_54.dat");
+
+
+  const int n1_0=34;
+  float npart1_0[n1_0], dndy1_0[n1_0],stat_err1_0[n1_0],sys_err1_0[n1_0],err1_0[n1_0],nparterr1_0[n1_0],npart_0_1[n1_0];
+  const int n1_1=34;
+  float npart1_1[n1_1], dndy1_1[n1_1],stat_err1_1[n1_1],sys_err1_1[n1_1],err1_1[n1_1],nparterr1_1[n1_1],npart_1_1[n1_1];
+  const int n1_2=34;
+  float npart1_2[n1_2], dndy1_2[n1_2],stat_err1_2[n1_2],sys_err1_2[n1_2],err1_2[n1_2],nparterr1_2[n1_2],npart_2_1[n1_2];
+  const int n1_3=34;
+  float npart1_3[n1_3], dndy1_3[n1_3],stat_err1_3[n1_3],sys_err1_3[n1_3],err1_3[n1_3],nparterr1_3[n1_3],npart_3_1[n1_3];
+  const int n1_4=34;
+  float npart1_4[n1_4], dndy1_4[n1_4],stat_err1_4[n1_4],sys_err1_4[n1_4],err1_4[n1_4],nparterr1_4[n1_4],npart_4_1[n1_4];
+  const int n1_5=34;
+  float npart1_5[n1_5], dndy1_5[n1_5],stat_err1_5[n1_5],sys_err1_5[n1_5],err1_5[n1_5],nparterr1_5[n1_5],npart_5_1[n1_5];
+  const int n1_6=34;
+  float npart1_6[n1_6], dndy1_6[n1_6],stat_err1_6[n1_6],sys_err1_6[n1_6],err1_6[n1_6],nparterr1_6[n1_6],npart_6_1[n1_6];
+  const int n1_7=34;
+  float npart1_7[n1_7], dndy1_7[n1_7],stat_err1_7[n1_7],sys_err1_7[n1_7],err1_7[n1_7],nparterr1_7[n1_7],npart_7_1[n1_7];
+  const int n1_8=34;
+  float npart_8[n1_8], dndy1_8[n1_8],stat_err1_8[n1_8],sys_err1_8[n1_8],err1_8[n1_8],nparterr1_8[n1_8],npart_8_1[n1_8];
+  
+  Int_t i=0;
+  cout<<"-----------------7.7---------------------"<<endl;
+  while(inf1_0)
+    {
+      //7.7 GeV
+      inf1_0>>npart1_0[i]>>nparterr1_0[i]>>dndy1_0[i]>>stat_err1_0[i]>>sys_err1_0[i];  
+      err1_0[i]= (sqrt((stat_err1_0[i]*stat_err1_0[i])+(sys_err1_0[i]*sys_err1_0[i])));
+      dndy1_0[i]=dndy1_0[i]/(npart1_0[i]/2);
+      err1_0[i]=err1_0[i]/(npart1_0[i]/2);
+      cout <<" npart  " << npart1_0[i]<<"\t"<<dndy1_0[i]<<"\t"<<err1_0[i]<< endl;
+       i++;
+     }
+  inf1_0.close();
+  cout<<"-----------------11---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_1)
+    {
+      //11 GeV
+      inf1_1>>npart1_1[i]>>nparterr1_1[i]>>dndy1_1[i]>>stat_err1_1[i]>>sys_err1_1[i];  
+      err1_1[i]= (sqrt((stat_err1_1[i]*stat_err1_1[i])+(sys_err1_1[i]*sys_err1_1[i])));
+      //dndy1_1[i]=dndy1_1[i]/(npart1_1[i]/2);
+      //err1_1[i]=err1_1[i]/(npart1_1[i]/2);
+      cout <<" npart  " << npart1_1[i]<<"\t"<<dndy1_1[i]<<"\t"<<err1_1[i]<< endl;
+       i++;
+     }
+  inf1_1.close();
+  cout<<"-----------------19---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_2)
+    {
+      //19 GeV
+      inf1_2>>npart1_2[i]>>nparterr1_2[i]>>dndy1_2[i]>>stat_err1_2[i]>>sys_err1_2[i];  
+      err1_2[i]= (sqrt((stat_err1_2[i]*stat_err1_2[i])+(sys_err1_2[i]*sys_err1_2[i])));
+      //dndy1_2[i]=dndy1_2[i]/(npart1_2[i]/2);
+      //err1_2[i]=err1_2[i]/(npart1_2[i]/2);
+      cout <<" npart  " << npart1_2[i]<<"\t"<<dndy1_2[i]<<"\t"<<err1_2[i]<< endl;
+       i++;
+     }
+  inf1_2.close();
+  cout<<"-----------------27---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_3)
+    {
+      //27 GeV
+      inf1_3>>npart1_3[i]>>nparterr1_3[i]>>dndy1_3[i]>>stat_err1_3[i]>>sys_err1_3[i];  
+      err1_3[i]= (sqrt((stat_err1_3[i]*stat_err1_3[i])+(sys_err1_3[i]*sys_err1_3[i])));
+      //dndy1_3[i]=dndy1_3[i]/(npart1_3[i]/2);
+      //err1_3[i]=err1_3[i]/(npart1_3[i]/2);
+      cout <<" npart  " << npart1_3[i]<<"\t"<<dndy1_3[i]<<"\t"<<err1_3[i]<< endl;
+       i++;
+     }
+  inf1_3.close();
+  cout<<"-----------------39---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_4)
+    {
+      //39 GeV
+      inf1_4>>npart1_4[i]>>nparterr1_4[i]>>dndy1_4[i]>>stat_err1_4[i]>>sys_err1_4[i];  
+      err1_4[i]= (sqrt((stat_err1_4[i]*stat_err1_4[i])+(sys_err1_4[i]*sys_err1_4[i])));
+      //dndy1_4[i]=dndy1_4[i]/(npart1_4[i]/2);
+      //err1_4[i]=err1_4[i]/(npart1_4[i]/2);
+      cout <<" npart  " << npart1_4[i]<<"\t"<<dndy1_4[i]<<"\t"<<err1_4[i]<< endl;
+       i++;
+     }
+  inf1_4.close();
+  cout<<"-----------------62---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_5)
+    {
+      //62 GeV
+      inf1_5>>npart1_5[i]>>nparterr1_5[i]>>dndy1_5[i]>>stat_err1_5[i];//>>sys_err1_5[i];  
+      err1_5[i]= sqrt((stat_err1_5[i]*stat_err1_5[i]));//+(sys_err1_5[i]*sys_err1_5[i])));
+      dndy1_5[i]=dndy1_5[i]/(npart1_5[i]/2);
+      err1_5[i]=err1_5[i]/(npart1_5[i]/2);
+      cout <<" npart  " << npart1_5[i]<<"\t"<<dndy1_5[i]<<"\t"<<err1_5[i]<< endl;
+       i++;
+     }
+  inf1_5.close();
+  cout<<"-----------------200---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_6)
+    {
+      //200 GeV
+      inf1_6>>npart1_6[i]>>nparterr1_6[i]>>dndy1_6[i]>>stat_err1_6[i];//>>sys_err1_6[i];  
+      err1_6[i]= sqrt((stat_err1_6[i]*stat_err1_6[i]));//+(sys_err1_6[i]*sys_err1_6[i])));
+      dndy1_6[i]=dndy1_6[i]/(npart1_6[i]/2);
+      err1_6[i]=err1_6[i]/(npart1_6[i]/2);
+      cout <<" npart  " << npart1_6[i]<<"\t"<<dndy1_6[i]<<"\t"<<err1_6[i]<< endl;
+       i++;
+     }
+  inf1_6.close();
+  cout<<"-----------------54---------------------"<<endl;
+
+  Int_t i=0;
+  while(inf1_7)
+    {
+      //54 GeV
+      inf1_7>>npart1_7[i]>>nparterr1_7[i]>>dndy1_7[i]>>stat_err1_7[i];//>>sys_err1_7[i];  
+      err1_7[i]= sqrt((stat_err1_7[i]*stat_err1_7[i]));//+(sys_err1_7[i]*sys_err1_7[i])));
+      dndy1_7[i]=dndy1_7[i]/(npart1_7[i]/2);
+      err1_7[i]=err1_7[i]/(npart1_7[i]/2);
+      cout <<" npart  " << npart1_7[i]<<"\t"<<dndy1_7[i]<<"\t"<<err1_7[i]<< endl;
+       i++;
+     }
+  inf1_7.close();
+
+  
+  TGraphErrors *gr1_0 = new TGraphErrors(9,npart1_0,dndy1_0,nparterr1_0,err1_0);
+   gr1_0->SetMarkerStyle(24);
+   gr1_0->SetMarkerColor(40);
+   gr1_0->SetLineColor(40);
+   gr1_0->SetMarkerSize(1.4);
+  TGraphErrors *gr1_1 = new TGraphErrors(9,npart1_1,dndy1_1,nparterr1_1,err1_1);
+   gr1_1->SetMarkerStyle(26);
+   gr1_1->SetMarkerColor(40);
+   gr1_1->SetLineColor(40);
+   gr1_1->SetMarkerSize(1.4);
+  TGraphErrors *gr1_2 = new TGraphErrors(9,npart1_2,dndy1_2,nparterr1_2,err1_2);
+   gr1_2->SetMarkerStyle(27);
+   gr1_2->SetMarkerColor(40);
+   gr1_2->SetLineColor(40);
+   gr1_2->SetMarkerSize(1.4);
+  TGraphErrors *gr1_3 = new TGraphErrors(9,npart1_3,dndy1_3,nparterr1_3,err1_3);
+   gr1_3->SetMarkerStyle(28);
+   gr1_3->SetMarkerColor(40);
+   gr1_3->SetLineColor(40);
+   gr1_3->SetMarkerSize(1.4);
+  TGraphErrors *gr1_4 = new TGraphErrors(9,npart1_4,dndy1_4,nparterr1_4,err1_4);
+   gr1_4->SetMarkerStyle(25);
+   gr1_4->SetMarkerColor(40);
+   gr1_4->SetLineColor(40);
+   gr1_4->SetMarkerSize(1.4);
+  TGraphErrors *gr1_5 = new TGraphErrors(9,npart1_5,dndy1_5,nparterr1_4,err1_5);
+   gr1_5->SetMarkerStyle(32);
+   gr1_5->SetMarkerColor(40);
+   gr1_5->SetLineColor(40);
+   gr1_5->SetMarkerSize(1.4);
+  TGraphErrors *gr1_6 = new TGraphErrors(9,npart1_6,dndy1_6,nparterr1_6,err1_6);
+   gr1_6->SetMarkerStyle(30);
+   gr1_6->SetMarkerColor(40);
+   gr1_6->SetLineColor(40);
+   gr1_6->SetMarkerSize(1.4);
+  TGraphErrors *gr1_7 = new TGraphErrors(9,npart1_7,dndy1_7,nparterr1_7,err1_7);
+   gr1_7->SetMarkerStyle(29);
+   gr1_7->SetMarkerColor(2);
+   gr1_7->SetLineColor(2);
+   gr1_7->SetMarkerSize(1.4);
+  TGraphErrors *gr1_7_e = new TGraphErrors(9,npart1_7,dndy1_7,nparterr1_7,err1_7);
+   gr1_7_e->SetMarkerStyle(30);
+   gr1_7_e->SetMarkerColor(1);
+   gr1_7_e->SetLineColor(2);
+   gr1_7_e->SetMarkerSize(1.4);
+ 
+  TH1 *hr1 = new TH2F("hr1","",10000,-2.0,380.0,1000,0.1,2.1);
+   hr1->SetDirectory(0);
+   hr1->SetStats(0);
+   hr1->SetFillColor(10);
+   hr1->GetXaxis()->SetTitle("#LT N_{part} #GT");
+   hr1->GetXaxis()->CenterTitle(true);
+   hr1->GetXaxis()->SetLabelFont(42);
+   hr1->GetXaxis()->SetNdivisions(504);
+   hr1->GetXaxis()->SetLabelSize(0.06);
+   hr1->GetXaxis()->SetTitleSize(0);
+   hr1->GetXaxis()->SetTitleOffset(1.06);
+   hr1->GetXaxis()->SetTitleFont(42);
+   hr1->GetYaxis()->CenterTitle(true);
+   hr1->GetYaxis()->SetNdivisions(505);
+   hr1->GetYaxis()->SetLabelFont(42);
+   hr1->GetYaxis()->SetLabelOffset(0.008);
+   hr1->GetYaxis()->SetLabelSize(0.06);
+   hr1->GetYaxis()->SetTitleSize(0);
+   hr1->GetYaxis()->SetTitleOffset(1.33);
+   hr1->GetYaxis()->SetTitleFont(42);
+   hr1->Draw("");
+   //arushi draw pip
+   gr1_0->Draw("ps");
+   /*gr1_1->Draw("ps");
+   gr1_2->Draw("ps");
+   gr1_3->Draw("ps");
+   gr1_4->Draw("ps");
+   gr1_5->Draw("ps");
+   gr1_6->Draw("ps");
+   gr1_7->Draw("ps");
+   gr1_7_e->Draw("ps");
+   */c1_0->Modified();
+   c1->cd();
+
+}

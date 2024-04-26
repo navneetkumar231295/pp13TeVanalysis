@@ -1,0 +1,16 @@
+# This file is a template, and might need editing before it works on your project.
+# Full project: https://gitlab.com/pages/doxygen
+image: ubuntu
+
+pages:
+  script:
+  - echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+  - apt-get update && apt-get -y install doxygen graphviz doxygen-latex wget
+  - wget  -nv https://root.cern.ch/doc/master/ROOT.tag
+  - doxygen Doxyfile
+  - mv html/ public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

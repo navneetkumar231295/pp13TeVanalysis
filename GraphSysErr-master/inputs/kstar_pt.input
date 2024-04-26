@@ -1,0 +1,24 @@
+*dataset:
+*location: Figure 4(a)
+*dscomment: Transverse-momentum distributions of (K*(892)0 + anti-K*(892)0)/2 in Pb-Pb collisions at sqrt(sNN)=2.76 TeV, centrality 0.0-20.0%
+*reackey: PB PB --> K*(892)0 X
+*reackey: PB PB --> AK*(892)0 X
+*obskey: DN/DPT
+*dserror: 0.6 PCT : normalization
+*dserror: 10.05 PCT : other pT-correlated systematic uncertainties
+*qual: CENTRALITY IN PCT : 0.0 TO 20.0
+*qual: RE : PB PB --> (K*(892)0 < PI- K+ > + AK*(892)0 < PI+ K- >)/2 X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760.0
+*qual: YRAP : -0.5 TO 0.5
+*yheader: (1/Nev)*D2(N)/DPT/DYRAP in GEV**-1
+*xheader: PT IN GEV 
+*data: x : y 
+ 0.3 TO 0.8; 8.132 +- 0.585 (DSYS=1.345:uncorrelated);
+ 0.8 TO 1.2; 9.670 +- 0.843 (DSYS=1.389:uncorrelated);
+ 1.2 TO 1.6; 7.260 +- 0.512 (DSYS=0.738:uncorrelated);
+ 1.6 TO 2.0; 5.258 +- 0.304 (DSYS=0.812:uncorrelated);
+ 2.0 TO 2.5; 3.309 +- 0.235 (DSYS=0.391:uncorrelated);
+ 2.5 TO 3.0; 1.401 +- 0.122 (DSYS=0.164:uncorrelated);
+ 3.0 TO 4.0; 0.4587 +- 0.0376 (DSYS=0.0493:uncorrelated);
+ 4.0 TO 5.0; 0.07789 +- 0.00825 (DSYS=0.01375:uncorrelated);
+*dataend:
